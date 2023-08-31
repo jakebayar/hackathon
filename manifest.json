@@ -22,10 +22,7 @@
         "128": "icon_16.png"
     },
     "background": {
-        "scripts": [
-            "background.js"
-        ],
-        "persistent": false
+        "service_worker": "background.js"
     },
     "chrome_settings_overrides": {
         "search_provider": {
