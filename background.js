@@ -1,28 +1,25 @@
+console.log("Background service worker active.");
+
 chrome.webRequest.onBeforeRequest.addListener(
-    function (details, callback) {
+    function (details) {
         const url = new URL(details.url);
-        const keyword = url.searchParams.get('q');
+        const keyword = url.searchParams.get("q");
 
-        // Check if the keyword starts with "go "
-        if (keyword.startsWith('go ')) {
-            const actualKeyword = keyword.substring(3);  // remove "go "
+        console.log("Intercepted keyword:", keyword);
 
-            chrome.storage.local.get('shortlinks', function (data) {
-                const shortlinks = data.shortlinks || {};
-
-                if (shortlinks[actualKeyword]) {
-                    callback({ redirectUrl: shortlinks[actualKeyword] });
+        return new Promise(resolve => {
+            chrome.storage.local.get(keyword, function (result) {
+                if (result[keyword]) {
+                    console.log("Found URL for keyword:", result[keyword]);
+                    resolve({ redirectUrl: result[keyword] });
                 } else {
-                    // If the keyword is not found, you can decide what to do. 
-                    callback({ redirectUrl: "https://defaultpage.com" });
+                    console.log("Keyword not found in storage.");
+                    resolve();  // Continue with the original request without redirection.
                 }
             });
-        } else {
-            callback({});
-        }
-
+        });
     },
-    { urls: ["https://www.google.com/search?q=go%20*"] },  // adjust this pattern as per your setup
+    { urls: ["https://colinks-placeholder.com/*"] },
     ["blocking"]
 );
 

@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "CodeLink",
-    "description": "A chrome extension for assigning key:url pairs to naviagate web pages faster.",
+    "description": "A chrome extension for assigning key:url pairs to navigate web pages faster.",
     "version": "1.0.0",
     "action": {
         "default_popup": "popup.html",
@@ -26,7 +26,7 @@
     },
     "chrome_settings_overrides": {
         "search_provider": {
-            "name": "CoLinks",
+            "name": "CodeLinks",
             "keyword": "go",
             "search_url": "https://colinks-placeholder.com?q={searchTerms}",
             "favicon_url": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.flaticon.com%2Ffree-icon%2Furl_1828108&psig=AOvVaw0tys3TN156RILDNPqXrLYA&ust=1693528955551000&source=images&cd=vfe&opi=89978449&ved=0CA8QjRxqFwoTCLilnZDVhYEDFQAAAAAdAAAAABAE",
