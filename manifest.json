@@ -4,30 +4,35 @@
     "description": "A chrome extension for assigning key:url pairs to naviagate web pages faster.",
     "version": "1.0.0",
     "action": {
-        "default_popup": "popup.js",
+        "default_popup": "popup.html",
         "default_icon": {
-            "16": "icons/icon_16.png",
-            "48": "icons/icon_48.png",
-            "128": "icons/icon_128.png"
+            "16": "icon_16.png",
+            "48": "icon_16.png",
+            "128": "icon_16.png"
         }
     },
     "permissions": [
-        "storage"
+        "storage",
+        "webRequest",
+        "webRequestBlocking"
     ],
     "icons": {
-        "16": "icons/icon_16.png",
-        "48": "icons/icon_48.png",
-        "128": "icons/icon_128.png"
+        "16": "icon_16.png",
+        "48": "icon_16.png",
+        "128": "icon_16.png"
     },
     "background": {
-        "service_worker": "background.js"
+        "scripts": [
+            "background.js"
+        ],
+        "persistent": false
     },
     "chrome_settings_overrides": {
         "search_provider": {
             "name": "CoLinks",
             "keyword": "go",
-            "search_url": "https://www.google.com/search?q={searchTerms}",
-            "favicon_url": "icon_16.png",
+            "search_url": "https://colinks-placeholder.com?q={searchTerms}",
+            "favicon_url": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.flaticon.com%2Ffree-icon%2Furl_1828108&psig=AOvVaw0tys3TN156RILDNPqXrLYA&ust=1693528955551000&source=images&cd=vfe&opi=89978449&ved=0CA8QjRxqFwoTCLilnZDVhYEDFQAAAAAdAAAAABAE",
             "is_default": false,
             "encoding": "UTF-8"
         }
